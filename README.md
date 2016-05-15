@@ -1,6 +1,21 @@
 # elm-styleguide
 
-Beginner Template
+## Rules
+
+- Qualify as many imports as possible before pushing to production:
+```diff
+- import Html exposing (..)
+- import Html.Events exposing (..)
++ import Html exposing (Html, div, input, text)
++ import Html.Events exposing (onInput)
+
+view { content } = div [] [
+  input [onInput Content] [],
+  text content
+  ]
+```
+
+## Beginner Template
 
 ```elm
 import Html exposing (..)
