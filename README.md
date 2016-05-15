@@ -1,5 +1,10 @@
 # elm-styleguide
 
+## Table of Contents
+- [Rules](#rules)
+- [Basic Template](#basic-template)
+- [Effectual Template](#effectual-template)
+
 ## Rules
 
 - Qualify as many imports as possible before pushing to production:
@@ -15,7 +20,7 @@ view { content } = div [] [
   ]
 ```
 
-## Basic Template (Noneffectual)
+## Basic Template
 
 ```elm
 import Html exposing (..)
