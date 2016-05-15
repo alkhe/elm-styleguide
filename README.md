@@ -29,3 +29,36 @@ view { content } = div [] [
   text content
   ]
 ```
+
+**Differences from Elm Guide:**
+- `import Html.App as Html` and using `Html.beginnerProgram` conflates the exports of `Html.App` those of `Html`.
+This guide defers to `import Html.App exposing (beginnerProgram)`.
+- The Elm Guide calls `beginnerProgram` with `{ model, view, update }`, but this guide uses `{ model, update, view }`, as it is preferable to list the most data-centric components first.
+- For `type alias`es, a more traditional Javascript-esque style is used:
+```elm
+type alias Model = {
+  content : String
+}
+```
+vs.
+```elm
+type alias Model =
+  { content : String
+  }
+```
+- It is more correct to call the initial state `null` than `model`, as the model changes throughout the life of program.
+- For `Html` functions, a more traditional Javascript-esque style is used:
+```elm
+view { content } = div [] [
+  input [onInput Content] [],
+  text content
+  ]
+```
+vs.
+```elm
+view model =
+  div []
+    [ input [ onInput Content ] []
+    , text model.content
+    ]
+```
