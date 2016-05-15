@@ -15,7 +15,7 @@ view { content } = div [] [
   ]
 ```
 
-## Beginner Template
+## Basic Template (Noneffectual)
 
 ```elm
 import Html exposing (..)
@@ -76,4 +76,36 @@ view model =
     [ input [ onInput Content ] []
     , text model.content
     ]
+```
+
+## Effectual Template
+```elm
+import Html exposing (..)
+import Html.App exposing (program)
+import Html.Events exposing (..)
+
+main = program { init = null, subscriptions = subscriptions, update = update, view = view }
+
+type alias Model = {
+  content : String
+}
+
+type Msg = Content String
+
+null : (Model, Cmd Msg)
+null = ({ content = "" }, Cmd.none)
+
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+  case msg of
+    Content s -> ({ model | content = s }, Cmd.none)
+
+view : Model -> Html Msg
+view { content } = div [] [
+  input [onInput Content] [],
+  text content
+  ]
+
+subscriptions : Model -> Sub Msg
+subscriptions _ = Sub.none
 ```
