@@ -67,6 +67,14 @@ type alias Model =
   }
 ```
 - It is more correct to call the initial state `null` than `model`, as the model changes throughout the life of program.
+- While the Elm Guide uses the `Model` constructor, it is better to explicitly use the Record style:
+```elm
+null = { content = "" }
+```
+vs.
+```elm
+null = Model ""
+```
 - For `Html` functions, a more traditional Javascript-esque style is used:
 ```elm
 view { content } = div [] [
